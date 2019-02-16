@@ -9,10 +9,8 @@ from sklearn.preprocessing import normalize, StandardScaler, MinMaxScaler
 from matplotlib import pyplot as plt
 import pandas as pd
 
-array = np.load("test_array_PCA_complete.npy")
-predict_array = np.load("test_array_PCA.npy")
-
-array = array[:20000]
+array = np.load("path to n-dimensional array, in numpy array format")
+predict_array = np.load("path to data to predict")
 
 def return_PCA(array, number_of_components):        #Return specified number of Principal Components of array
 
@@ -75,16 +73,17 @@ def plot_decision_boundary(model, label):
     plt.title("Outlier detection: " + label)
     plt.show()
 
-principal_components = 2
+principal_components = 2        #Number of Principal Components
 data = return_PCA(array, principal_components)
 print(data.shape)
-k_means(data)
+k_means(data)       #Call K-means function
 
+#Call functions for other algorithms
 model_ellipse = empirical_covariance(data)
 model_svm = one_class_svm(data)
 model_ilf = isolation_forest(data)
 
-y_predicted = model_ellipse.fit_predict(predict_array)
+y_predicted = model_ellipse.fit_predict(predict_array)      #Predict labels for data to predict
 
 count = 0
 for i in range(len(y_predicted)):
