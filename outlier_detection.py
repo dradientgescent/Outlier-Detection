@@ -9,6 +9,7 @@ from sklearn.preprocessing import normalize, StandardScaler, MinMaxScaler
 from matplotlib import pyplot as plt
 import pandas as pd
 
+#load training and test data
 array = np.load("path to n-dimensional array, in numpy array format")
 predict_array = np.load("path to data to predict")
 
